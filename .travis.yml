@@ -2,7 +2,8 @@
 language: java
 
 before_install:
-  - python install 3.5
+  - sudo apt-get update
+  - sudo apt-get install python3
   - cd $HOME
   - git clone git://github.com/eclipse/paho.mqtt.testing.git
   - cd $HOME/paho.mqtt.testing/interoperability/
