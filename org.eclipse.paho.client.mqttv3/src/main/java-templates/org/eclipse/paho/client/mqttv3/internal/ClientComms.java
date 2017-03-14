@@ -682,16 +682,24 @@ public class ClientComms {
 				internalSend(conPacket, conToken);
 			} catch (MqttException ex) {
 				//@TRACE 212=connect failed: unexpected exception
+				System.out.println("<<<<< JAMES >>>>>>> 212  connect failed: unexpected exception");
+				System.out.println("CONSTATE: " + conState);
 				log.fine(CLASS_NAME, methodName, "212", null, ex);
 				mqttEx = ex;
 			} catch (Exception ex) {
 				//@TRACE 209=connect failed: unexpected exception
+				System.out.println("<<<<< JAMES >>>>>>> 209 connect failed: unexpected exception");
+				System.out.println("CONSTATE: " + conState);
 				log.fine(CLASS_NAME, methodName, "209", null, ex);
 				mqttEx =  ExceptionHelper.createMqttException(ex);
 			}
 
 			if (mqttEx != null) {
+				System.out.println("<<<<< JAMES >>>>>>> Shutting down connction");
+				System.out.println("CONSTATE before: " + conState);
 				shutdownConnection(conToken, mqttEx);
+				System.out.println("CONSTATE after: " + conState);
+
 			}
 		}
 	}
