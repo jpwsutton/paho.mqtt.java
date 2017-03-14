@@ -406,6 +406,8 @@ public class BasicSSLTest {
       Assert.fail("Failed:" + methodName + " exception=" + exception);
     }
     finally {
+    	log.info("Sleeping for two seconds..");
+    	Thread.sleep(2000); // Sleep for a few seconds to allow the connection to be closed
       try {
         if ((mqttClient != null) && mqttClient.isConnected()) {
           log.info("Disconnecting...");
